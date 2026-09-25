@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION BAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <a href="{{ url_for('courses') }}"
+           class="active">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training Programs
+        </a>
+
+        <a href="{{ url_for('certifications') }}">
+            Certifications
+        </a>
+
+        <a href="{{ url_for('login') }}">
+            Log in
+        </a>
+
+        <a href="{{ url_for('register') }}"
+           class="register-btn">
+            Register
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     COURSES SECTION
+========================= -->
+
+<section class="page">
+
+
+    <div class="page-header">
+
+        <span class="small-label">
+            LEARNING LIBRARY
+        </span>
+
+
+        <h1>
+            Explore Courses.
+        </h1>
+
+
+        <p>
+            Build practical skills through structured,
+            beginner-friendly learning pathways.
+            Complete a course to unlock your
+            Capacity Connect certification.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         COURSE CARDS
+    ========================= -->
+
+    <div class="card-grid">
+
+
+        {% for course in courses %}
+
+
+        <div class="card">
+
+
+            <!-- Category -->
+
+            <span class="badge">
+                {{ course.category }}
+            </span>
+
+
+            <!-- Course Title -->
+
+            <h2>
+                {{ course.title }}
+            </h2>
+
+
+            <!-- Description -->
+
+            <p>
+                {{ course.description }}
+            </p>
+
+
+            <br>
+
+
+            <!-- Level -->
+
+            <span class="badge">
+                {{ course.level }}
+            </span>
+
+
+            <!-- Course Actions -->
+
+            <div style="
+                display:flex;
+                flex-wrap:wrap;
+                gap:10px;
+                margin-top:20px;
+            ">
+
+
+                <!-- View Details -->
+
+                <a href="#course-details"
+                   class="card-button">
+
+                    View Details
+
+                </a>
+
+
+                <!-- Complete Course -->
+
+                <a href="{{ url_for(
+                    'complete_course',
+                    course_name=course.title
+                ) }}"
+                   class="card-button">
+
+                    start assessment
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+
+    <!-- =========================
+         COURSE INFORMATION
+    ========================= -->
+
+    <div id="course-details"
+         class="page-header"
+         style="margin-top:70px;">
+
+
+        <span class="small-label">
+            COURSE DETAILS
+        </span>
+
+
+        <h1>
+            What You Will Learn
+        </h1>
+
+
+        <p>
+            Each course is designed around practical
+            skills, structured learning pathways and
+            competency development.
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         COURSE DETAILS CARDS
+    ========================= -->
+
+    <div class="card-grid">
+
+
+        <div class="card">
+
+            <span class="badge">
+                PROGRAMMING
+            </span>
+
+            <h2>
+                Python Fundamentals
+            </h2>
+
+            <p>
+                Learn programming fundamentals such as
+                variables, data types, conditions,
+                loops, functions and problem solving.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="badge">
+                DEVELOPMENT
+            </span>
+
+            <h2>
+                Web Development
+            </h2>
+
+            <p>
+                Learn the fundamentals of creating web
+                applications using HTML, CSS, JavaScript
+                and Flask.
+            </p>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="badge">
+                DATA
+            </span>
+
+            <h2>
+                Data Analysis
+            </h2>
+
+            <p>
+                Understand data handling and analysis
+                concepts and learn how structured data
+                can be transformed into useful insights.
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================
+         CERTIFICATION MESSAGE
+    ========================= -->
+
+    <div class="dashboard-box"
+         style="margin-top:50px;">
+
+        <span class="small-label">
+            CAPACITY CONNECT CERTIFICATION
+        </span>
+
+
+        <h1>
+            Complete. Demonstrate. Get Certified.
+        </h1>
+
+
+        <p>
+            Complete your learning journey and access
+            your certificate from the Certifications
+            section of Capacity Connect.
+        </p>
+
+
+        <a href="{{ url_for('certifications') }}"
+           class="card-button"
+           style="
+               display:inline-block;
+               margin-top:25px;
+               background:white;
+               color:black;
+           ">
+
+            View Certifications
+
+        </a>
+
+    </div>
+
+
+</section>
+
+
+
+</body>
+
+</html>

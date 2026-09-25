@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assessment Result | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('courses') }}">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training Programs
+        </a>
+
+        <a href="{{ url_for('certifications') }}">
+            Certifications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<section class="page">
+
+
+    {% if passed %}
+
+
+    <!-- PASSED -->
+
+    <div class="dashboard-box">
+
+        <span class="small-label">
+            ASSESSMENT PASSED
+        </span>
+
+        <h1>
+            Congratulations!
+        </h1>
+
+        <p>
+            You successfully completed the assessment
+            for <strong>{{ course_name }}</strong>.
+        </p>
+
+        <p style="margin-top:15px;">
+            Your score:
+            <strong>{{ score }}/3</strong>
+        </p>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <div class="card">
+
+            <span class="badge">
+                COURSE COMPLETED
+            </span>
+
+            <h2>
+                Certificate Unlocked
+            </h2>
+
+            <p>
+                You have successfully demonstrated your
+                understanding of the course. Your Capacity
+                Connect certificate is now available.
+            </p>
+
+
+            <a href="{{ url_for(
+                'certificate',
+                course_name=course_name
+            ) }}"
+               class="card-button">
+
+                View Certificate
+
+            </a>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="badge">
+                NEXT STEP
+            </span>
+
+            <h2>
+                Continue Learning
+            </h2>
+
+            <p>
+                Explore more courses and continue building
+                your skills and competencies.
+            </p>
+
+
+            <a href="{{ url_for('courses') }}"
+               class="card-button">
+
+                Explore Courses
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- FAILED -->
+
+    <div class="dashboard-box">
+
+        <span class="small-label">
+            ASSESSMENT RESULT
+        </span>
+
+        <h1>
+            Keep Learning.
+        </h1>
+
+        <p>
+            You scored
+            <strong>{{ score }}/3</strong>
+            in the {{ course_name }} assessment.
+        </p>
+
+        <p style="margin-top:15px;">
+            Review the course material and try the
+            assessment again.
+        </p>
+
+    </div>
+
+
+    <div class="card-grid">
+
+
+        <div class="card">
+
+            <span class="badge">
+                TRY AGAIN
+            </span>
+
+            <h2>
+                Improve Your Score
+            </h2>
+
+            <p>
+                Revisit the learning material and take
+                the assessment again.
+            </p>
+
+
+            <a href="{{ url_for(
+                'course_quiz',
+                course_name=course_name
+            ) }}"
+               class="card-button">
+
+                Try Assessment Again
+
+            </a>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <span class="badge">
+                LEARNING
+            </span>
+
+            <h2>
+                Explore Other Courses
+            </h2>
+
+            <p>
+                You can also explore other learning
+                pathways available on Capacity Connect.
+            </p>
+
+
+            <a href="{{ url_for('courses') }}"
+               class="card-button">
+
+                Explore Courses
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    {% endif %}
+
+
+</section>
+
+
+</body>
+
+</html>

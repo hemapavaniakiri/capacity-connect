@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Course Assessment | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        .quiz-page {
+            padding: 60px 7%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .quiz-card {
+            background: white;
+            border: 1px solid #dddddd;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .quiz-option {
+            display: block;
+            padding: 14px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .quiz-option:hover {
+            background: #f5f5f5;
+        }
+
+        .quiz-option input {
+            margin-right: 10px;
+        }
+
+        .quiz-submit {
+            border: none;
+            background: #050505;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .quiz-submit:hover {
+            background: #1683ff;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('courses') }}">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training Programs
+        </a>
+
+        <a href="{{ url_for('certifications') }}">
+            Certifications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="quiz-page">
+
+
+    <div class="page-header">
+
+        <span class="small-label">
+            CAPACITY CONNECT ASSESSMENT
+        </span>
+
+        <h1>
+            {{ course_name }}
+        </h1>
+
+        <p>
+            Complete this short assessment to demonstrate
+            your understanding and unlock your certificate.
+        </p>
+
+    </div>
+
+
+
+    <form method="POST">
+
+
+        {% for question in questions %}
+
+        {% set question_index = loop.index0 %}
+
+        <div class="quiz-card">
+
+            <h2>
+                {{ loop.index }}. {{ question.question }}
+            </h2>
+
+
+            {% for option in question.options %}
+
+            <label class="quiz-option">
+
+                <input
+                    type="radio"
+                    name="question_{{ question_index }}"
+                    value="{{ option }}"
+                    required
+                >
+
+                {{ option }}
+
+            </label>
+
+            {% endfor %}
+
+        </div>
+
+        {% endfor %}
+
+
+        <button type="submit"
+                class="quiz-submit">
+
+            Submit Assessment
+
+        </button>
+
+
+    </form>
+
+
+</section>
+
+
+</body>
+
+</html>

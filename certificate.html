@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        .certificate-page {
+
+            min-height: calc(100vh - 92px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 50px 7%;
+
+        }
+
+
+        .certificate {
+
+            width: min(950px, 100%);
+
+            background: white;
+
+            border: 12px solid #050505;
+
+            padding: 65px;
+
+            text-align: center;
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+
+            position: relative;
+
+        }
+
+
+        .certificate::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 18px;
+
+            border: 1px solid #cccccc;
+
+            pointer-events: none;
+
+        }
+
+
+        .certificate-content {
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+        .certificate-logo {
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .certificate-label {
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            font-weight: 700;
+
+            color: #777;
+
+        }
+
+
+        .certificate h1 {
+
+            font-size: 48px;
+
+            margin: 15px 0;
+
+        }
+
+
+        .certificate-text {
+
+            font-size: 17px;
+
+            color: #666;
+
+            line-height: 1.7;
+
+        }
+
+
+        .learner-name {
+
+            font-size: 32px;
+
+            font-weight: 800;
+
+            margin: 25px 0 15px;
+
+        }
+
+
+        .course-name {
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin: 20px 0;
+
+        }
+
+
+        .certificate-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-top: 50px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #dddddd;
+
+            text-align: left;
+
+        }
+
+
+        .certificate-meta div {
+
+            flex: 1;
+
+        }
+
+
+        .meta-label {
+
+            display: block;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            color: #888;
+
+            font-weight: 800;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .meta-value {
+
+            font-weight: 700;
+
+        }
+
+
+        .certificate-actions {
+
+            text-align: center;
+
+            margin-top: 30px;
+
+        }
+
+
+        .certificate-actions a {
+
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 10px;
+
+            background: #050505;
+
+            color: white;
+
+            font-weight: 700;
+
+            margin: 5px;
+
+        }
+
+
+        .certificate-actions a:hover {
+
+            background: #1683ff;
+
+        }
+
+
+        @media(max-width: 700px) {
+
+            .certificate {
+
+                padding: 40px 25px;
+
+            }
+
+            .certificate h1 {
+
+                font-size: 34px;
+
+            }
+
+            .learner-name {
+
+                font-size: 25px;
+
+            }
+
+            .course-name {
+
+                font-size: 22px;
+
+            }
+
+            .certificate-meta {
+
+                flex-direction: column;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <a href="{{ url_for('courses') }}">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training Programs
+        </a>
+
+        <a href="{{ url_for('certifications') }}"
+           class="active">
+            Certifications
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<section class="certificate-page">
+
+
+    <div class="certificate">
+
+
+        <div class="certificate-content">
+
+
+            <div class="certificate-logo">
+                CAPACITY CONNECT
+            </div>
+
+
+            <div class="certificate-label">
+                CERTIFICATE OF COMPLETION
+            </div>
+
+
+            <h1>
+                Certificate
+            </h1>
+
+
+            <p class="certificate-text">
+                This certificate is proudly presented to
+            </p>
+
+
+            <div class="learner-name">
+                {{ learner }}
+            </div>
+
+
+            <p class="certificate-text">
+                for successfully completing the learning
+                requirements for
+            </p>
+
+
+            <div class="course-name">
+                {{ course_name }}
+            </div>
+
+
+            <p class="certificate-text">
+                and demonstrating commitment to skill
+                development through Capacity Connect.
+            </p>
+
+
+
+            <div class="certificate-meta">
+
+
+                <div>
+
+                    <span class="meta-label">
+                        ISSUED BY
+                    </span>
+
+                    <span class="meta-value">
+                        Capacity Connect
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <span class="meta-label">
+                        CERTIFICATE ID
+                    </span>
+
+                    <span class="meta-value">
+                        {{ certificate_id }}
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <span class="meta-label">
+                        STATUS
+                    </span>
+
+                    <span class="meta-value">
+                        VERIFIED
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<div class="certificate-actions">
+
+    <a href="{{ url_for('certifications') }}">
+        Back to Certifications
+    </a>
+
+    <a href="javascript:window.print()">
+        Print Certificate
+    </a>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Dashboard | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('courses') }}">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training
+        </a>
+
+        <a href="{{ url_for('quiz') }}">
+            Assessment
+        </a>
+
+        <a href="{{ url_for('logout') }}"
+           class="register-btn">
+            Logout
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="dashboard">
+
+    <div class="dashboard-box">
+
+        <span class="small-label">
+            PERSONAL DASHBOARD
+        </span>
+
+        <h1>
+            Welcome back!
+        </h1>
+
+        <p>
+            Logged in as {{ user }}
+        </p>
+
+        <p style="margin-top:10px;">
+            Learning purpose: {{ purpose }}
+        </p>
+
+    </div>
+
+
+    <div class="dashboard-links">
+
+        <a href="{{ url_for('courses') }}"
+           class="dashboard-link">
+
+            <span class="badge">
+                LEARN
+            </span>
+
+            <h2>
+                Explore Courses
+            </h2>
+
+            <p>
+                Find courses and build new competencies.
+            </p>
+
+        </a>
+
+
+        <a href="{{ url_for('training') }}"
+           class="dashboard-link">
+
+            <span class="badge">
+                DEVELOP
+            </span>
+
+            <h2>
+                Training Programs
+            </h2>
+
+            <p>
+                Join structured skill-development programs.
+            </p>
+
+        </a>
+
+
+        <a href="{{ url_for('quiz') }}"
+           class="dashboard-link">
+
+            <span class="badge">
+                ASSESS
+            </span>
+
+            <h2>
+                Skill Assessment
+            </h2>
+
+            <p>
+                Assess your current competency level.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

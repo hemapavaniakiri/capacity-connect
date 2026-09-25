@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Certifications | Capacity Connect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            CC
+        </div>
+
+        <div>
+
+            <div class="brand-name">
+                Capacity Connect
+            </div>
+
+            <div class="brand-tagline">
+                LEARNING & CAPACITY BUILDING
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="{{ url_for('home') }}">
+            Home
+        </a>
+
+        <a href="{{ url_for('about') }}">
+            About
+        </a>
+
+        <a href="{{ url_for('courses') }}">
+            Courses
+        </a>
+
+        <a href="{{ url_for('training') }}">
+            Training Programs
+        </a>
+
+        <a href="{{ url_for('certifications') }}"
+           class="active">
+            Certifications
+        </a>
+
+        <a href="{{ url_for('login') }}">
+            Log in
+        </a>
+
+        <a href="{{ url_for('register') }}"
+           class="register-btn">
+            Register
+        </a>
+
+    </nav>
+
+</header>
+
+
+<section class="page">
+
+
+    <div class="page-header">
+
+        <span class="small-label">
+            MY CERTIFICATIONS
+        </span>
+
+
+        <h1>
+            Learn. Complete. Get Certified.
+        </h1>
+
+
+        <p>
+            Track your course completion and access
+            your Capacity Connect certificates.
+        </p>
+
+    </div>
+
+
+
+    <div class="card-grid">
+
+
+        {% for certificate in certificates %}
+
+
+        <div class="card">
+
+
+            <span class="badge">
+                {{ certificate.category }}
+            </span>
+
+
+            <h2>
+                {{ certificate.title }}
+            </h2>
+
+
+            <p>
+                Course level:
+                {{ certificate.level }}
+            </p>
+
+
+            {% if certificate.completed %}
+
+                <div style="
+                    margin-top:20px;
+                    font-weight:700;
+                ">
+
+                    ✓ Course Completed
+
+                </div>
+
+
+                <a href="{{ url_for('certificate', course_name=certificate.title.replace(' Certificate', '')) }}"
+   class="card-button">
+
+    View Certificate
+
+</a>
+
+                    View Certificate
+
+                </a>
+
+
+            {% else %}
+
+                <div style="
+                    margin-top:20px;
+                    font-weight:700;
+                    color:#777;
+                ">
+
+                    Course Not Completed
+
+                </div>
+
+
+                <a href="{{ url_for('courses') }}"
+                   class="card-button">
+
+                    Explore Course
+
+                </a>
+
+            {% endif %}
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</section>
+
+
+</body>
+
+</html>
